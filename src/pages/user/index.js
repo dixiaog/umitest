@@ -5,19 +5,19 @@ import { connect } from 'dva'
 import { Row, Col, Button, Popconfirm } from 'antd'
 import { Page } from 'components'
 import queryString from 'query-string'
-import List from './components/List'
-import Filter from './components/Filter'
-import Modal from './components/Modal'
+import List from '../../components/Users/List'
+import Filter from '../../components/Users/Filter'
+import Modal from '../../components/Users/Modal'
 
 
 const User = ({
-  location, dispatch, user, loading,
+  location, dispatch, user1, loading,
 }) => {
   location.query = queryString.parse(location.search)
   const { query, pathname } = location
   const {
     list, pagination, currentItem, modalVisible, modalType, isMotion, selectedRowKeys,
-  } = user
+  } = user1
 
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
@@ -33,12 +33,12 @@ const User = ({
     item: modalType === 'create' ? {} : currentItem,
     visible: modalVisible,
     maskClosable: false,
-    confirmLoading: loading.effects['user/update'],
+    confirmLoading: loading.effects['user1/update'],
     title: `${modalType === 'create' ? 'Create User' : 'Update User'}`,
     wrapClassName: 'vertical-center-modal',
     onOk (data) {
       dispatch({
-        type: `user/${modalType}`,
+        type: `user1/${modalType}`,
         payload: data,
       })
         .then(() => {
@@ -47,14 +47,14 @@ const User = ({
     },
     onCancel () {
       dispatch({
-        type: 'user/hideModal',
+        type: 'user1/hideModal',
       })
     },
   }
 
   const listProps = {
     dataSource: list,
-    loading: loading.effects['user/query'],
+    loading: loading.effects['user1/query'],
     pagination,
     location,
     isMotion,
@@ -66,7 +66,7 @@ const User = ({
     },
     onDeleteItem (id) {
       dispatch({
-        type: 'user/delete',
+        type: 'user1/delete',
         payload: id,
       })
         .then(() => {
@@ -77,7 +77,7 @@ const User = ({
     },
     onEditItem (item) {
       dispatch({
-        type: 'user/showModal',
+        type: 'user1/showModal',
         payload: {
           modalType: 'update',
           currentItem: item,
@@ -88,7 +88,7 @@ const User = ({
       selectedRowKeys,
       onChange: (keys) => {
         dispatch({
-          type: 'user/updateState',
+          type: 'user1/updateState',
           payload: {
             selectedRowKeys: keys,
           },
@@ -110,20 +110,20 @@ const User = ({
     },
     onAdd () {
       dispatch({
-        type: 'user/showModal',
+        type: 'user1/showModal',
         payload: {
           modalType: 'create',
         },
       })
     },
     switchIsMotion () {
-      dispatch({ type: 'user/switchIsMotion' })
+      dispatch({ type: 'user1/switchIsMotion' })
     },
   }
 
   const handleDeleteItems = () => {
     dispatch({
-      type: 'user/multiDelete',
+      type: 'user1/multiDelete',
       payload: {
         ids: selectedRowKeys,
       },
@@ -162,4 +162,4 @@ User.propTypes = {
   loading: PropTypes.object,
 }
 
-export default connect(({ user, loading }) => ({ user, loading }))(User)
+export default connect(({ user1, loading }) => ({ user1, loading }))(User)

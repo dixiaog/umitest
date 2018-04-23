@@ -2,15 +2,15 @@
 import modelExtend from 'dva-model-extend'
 import queryString from 'query-string'
 import { config } from 'utils'
-import { create, remove, update } from '../services/user'
-import * as usersService from '../services/users'
+import { create, remove, update } from '../services/user/user'
+import * as usersService from '../services/user/users'
 import { pageModel } from 'utils/model'
 
 const { query } = usersService
 const { prefix } = config
 
 export default modelExtend(pageModel, {
-  namespace: 'user',
+  namespace: 'user1',
 
   state: {
     currentItem: {},

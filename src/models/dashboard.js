@@ -1,8 +1,8 @@
 import { parse } from 'qs'
 import modelExtend from 'dva-model-extend'
-import { query } from '../services/dashboard'
+import { query } from '../services/dashboard/dashboard'
 import { model } from 'utils/model'
-import * as weatherService from '../services/weather'
+import * as weatherService from '../services/dashboard/weather'
 
 export default modelExtend(model, {
   namespace: 'dashboard',
