@@ -7,7 +7,7 @@ import { Page } from 'components'
 import queryString from 'query-string'
 import List from '../../components/Users/List'
 import Filter from '../../components/Users/Filter'
-import Modal from '../../components/Users/Modal'
+import Modal from './Modal'
 
 
 const User = ({

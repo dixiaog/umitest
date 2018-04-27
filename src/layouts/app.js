@@ -19,7 +19,6 @@ const { Header, Bread, styles } = MyLayout
 const { prefix, openPages } = config
 
 let lastHref
-
 const App = ({
   children, dispatch, app, loading, location,
 }) => {

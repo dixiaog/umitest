@@ -4,6 +4,7 @@ import withRouter from 'umi/withRouter'
 import App from './app'
 
 export default withRouter((props) => {
+  console.log('props', props)
   return (
     <LocaleProvider locale={enUS}>
       <App>
