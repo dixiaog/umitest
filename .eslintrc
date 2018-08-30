@@ -21,9 +21,7 @@
     "no-continue": 0,
     "no-mixed-operators": 0,
     "no-plusplus": 0,
-    "no-unused-vars": [2, { "ignoreRestSiblings": true }],
     "no-underscore-dangle": 0,
-    "space-before-function-paren": [2, "always"],
     "semi": [2, "never"],
     "import/no-extraneous-dependencies": 0,
     "import/prefer-default-export": 0,
@@ -43,6 +41,8 @@
     "react/jsx-no-bind": 0,
     "react/no-danger": 0,
     "react/jsx-first-prop-new-line": 0,
-    "react/jsx-filename-extension": 0
+    "react/jsx-filename-extension": 0,
+    "no-use-before-define": [0],
+    "no-unused-vars": "warn"
   }
 }
